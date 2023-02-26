@@ -17,6 +17,7 @@ const detailsAliens = require('./routes/details/aliens/details')
 const dearn333 = require('./routes/dailyEarn/333/dearn')
 const dearn3333 = require('./routes/dailyEarn/3333/dearn')
 const dearnAliens = require('./routes/dailyEarn/aliens/dearn')
+const cors = require('cors');
 var Contract = require('web3-eth-contract');
 
 Contract.setProvider("https://bsc-dataseed1.binance.org")
@@ -25,6 +26,7 @@ const PORT = process.env.API_PORT || 4000
 
 const app = express()
 
+app.use(cors('*'));
 app.use(express.json())
 
 const vaultbal = vBal.vaultbal
