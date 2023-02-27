@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 const NFTABI = require('../../../../config/NFTABI.json')
 const Contract = require('web3-eth-contract')
+const axios = require('axios')
 
 Contract.setProvider('https://rpc.ankr.com/bsc');
 
@@ -17,7 +18,13 @@ async function imagealiens(id) {
       "https://gateway.ipfscdn.io/ipfs/"
     )
 
-  return(x)
+    const req = await axios.get(x)
+    const image = req.data.image.replace(
+      "ipfs://",
+      "https://gateway.ipfscdn.io/ipfs/"
+    )
+
+  return(image)
 }
 
 module.exports = {
